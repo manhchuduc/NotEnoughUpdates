@@ -479,9 +479,27 @@ public class NotEnoughUpdates {
 		Minecraft mc = Minecraft.getMinecraft();
 
 		if (mc != null && mc.theWorld != null && mc.thePlayer != null) {
-			String brand = mc.thePlayer.getClientBrand();
-			if (mc.isSingleplayer() || brand == null ||
-				(!brand.toLowerCase(Locale.ROOT).contains("hypixel") && !brand.toLowerCase(Locale.ROOT).contains("fakepixel"))) {
+			if (mc.isSingleplayer()) {
+				SBInfo.getInstance().resetScoreboardLocation();
+				hasSkyblockScoreboard = false;
+				return;
+			}
+
+			if (mc.getCurrentServerData() == null) {
+				SBInfo.getInstance().resetScoreboardLocation();
+				hasSkyblockScoreboard = false;
+				return;
+			}
+
+			String serverIP = mc.getCurrentServerData().serverIP;
+			if (serverIP == null) {
+				SBInfo.getInstance().resetScoreboardLocation();
+				hasSkyblockScoreboard = false;
+				return;
+			}
+
+			boolean isSupportedServer = serverIP.toLowerCase(Locale.ROOT).contains("hypixel") || serverIP.toLowerCase(Locale.ROOT).contains("fakepixel");
+			if (serverIP == null || !isSupportedServer) {
 				SBInfo.getInstance().resetScoreboardLocation();
 				hasSkyblockScoreboard = false;
 				return;
