@@ -141,7 +141,7 @@ public class FarmingSkillOverlay extends TextOverlay {
 	private void gatherJacobData() {
 		inJacobContest = false;
 		if (isJacobTime()) {
-			int timeLeftInContest = (20 * 60) - ((int) ((System.currentTimeMillis() % 3600000 - 900000) / 1000));
+			int timeLeftInContest = (20 * 60) - ((int) ((System.currentTimeMillis() % 3600000 - 2100000) / 1000));
 			int cropsFarmed = -1;
 			for (String line : SidebarUtil.readSidebarLines()) {
 				val matcher = CONTEST_AMOUNT_PATTERN.matcher(line);
@@ -171,7 +171,7 @@ public class FarmingSkillOverlay extends TextOverlay {
 	 */
 	private static boolean isJacobTime() {
 		long now = System.currentTimeMillis();
-		return now % 3600000 >= 900000 && now % 3600000 <= 2100000;
+		return now % 3600000 >= 2100000 && now % 3600000 <= 3300000;
 	}
 
 	@Override

@@ -136,7 +136,7 @@ public class CalendarOverlay {
 	private static final long DAY = HOUR * 24;
 
 	private static final long DA_OFFSET = 1000 * 60 * 55; // Dark Auction
-	private static final long JF_OFFSET = 1000 * 60 * 15; // Jacob's Farming Contest
+	private static final long JF_OFFSET = 1000 * 60 * 35; // Jacob's Farming Contest
 
 	private static final ItemStack DA_STACK; // Dark Auction
 	private static final ItemStack JF_STACK; // Jacob's Farming Contest
